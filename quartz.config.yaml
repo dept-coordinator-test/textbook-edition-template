@@ -1,0 +1,339 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+#
+# Department-edition Quartz v5 configuration — textbook platform (Scenario B).
+# Coordinators: you only ever edit the four lines marked "← EDIT".
+# Everything else is theme + behaviour shared across all editions.
+# Full plugin list mirrors quartz.config.default.yaml (v5.0.0); deviations are commented.
+
+configuration:
+  pageTitle: "EDITION TITLE" # ← EDIT (guide step 3a) e.g. "Biology Edition — <Textbook Title>"
+  pageTitleSuffix: ""
+  enableSPA: true
+  enablePopovers: true
+  # Built-in provider uses Plausible's legacy shared script; we inject the
+  # per-site pa-*.js script via edition-integrations instead. Keep this null
+  # or every view double-counts.
+  analytics: null
+  locale: en-US
+  baseUrl: edition.example.org # ← EDIT (guide step 3b) your site address, no https://, no trailing slash
+  ignorePatterns:
+    - private
+    - templates
+    - .obsidian
+  theme:
+    fontOrigin: googleFonts
+    cdnCaching: true
+    typography:
+      # visual-direction-v1: sans throughout, Inter + JetBrains Mono
+      header: Inter
+      body: Inter
+      code: JetBrains Mono
+    colors:
+      # Mapping per visual-direction-v1.md "Quartz colors.lightMode" line —
+      # same family as publish.css v1 on the canonical site.
+      lightMode:
+        light: "#FFFFFF" # page background
+        lightgray: "#E6E6E6" # borders / dividers
+        gray: "#9B9BA1" # faint / placeholders
+        darkgray: "#2B2B2B" # body text
+        dark: "#2B2B2B" # headings, icons
+        secondary: "#7C6CF0" # primary accent — links, active nav
+        tertiary: "#6A57E0" # accent hover (AA on white)
+        highlight: "#EEEBFD" # accent wash — internal-link tint
+        textHighlight: "#FDF2B3" # ==mark== / Hypothes.is echo
+      # Dark mode is disabled below (canonical is light-only; keeps the family
+      # reading as one). Values kept sane in case Brandon wants it re-enabled.
+      darkMode:
+        light: "#161618"
+        lightgray: "#393639"
+        gray: "#646464"
+        darkgray: "#D4D4D4"
+        dark: "#EBEBEC"
+        secondary: "#A79AF7"
+        tertiary: "#8F7FF2"
+        highlight: "rgba(124, 108, 240, 0.15)"
+        textHighlight: "#b3aa0288"
+
+plugins:
+  - source: github:quartz-community/created-modified-date
+    enabled: true
+    options:
+      defaultDateType: modified
+      priority:
+        - frontmatter
+        - git
+        - filesystem
+    order: 10
+  - source: github:quartz-community/syntax-highlighting
+    enabled: true
+    options:
+      theme:
+        light: github-light
+        dark: github-dark
+      keepBackground: false
+    order: 20
+  - source: github:quartz-community/obsidian-flavored-markdown
+    enabled: true
+    options:
+      enableInHtmlEmbed: false
+      enableCheckbox: true
+    order: 30
+  - source: github:quartz-community/github-flavored-markdown
+    enabled: true
+    order: 40
+  - source: github:quartz-community/table-of-contents
+    enabled: true
+    order: 50
+    layout:
+      position: right
+      priority: 30
+  - source: github:quartz-community/crawl-links
+    enabled: true
+    options:
+      # matches Obsidian's "shortest path" link style used in the canonical vault
+      markdownLinkResolution: shortest
+    order: 60
+  - source: github:quartz-community/description
+    enabled: true
+    order: 70
+  - source: github:quartz-community/latex
+    enabled: true
+    options:
+      renderEngine: katex
+    order: 80
+  - source: github:quartz-community/citations
+    enabled: false
+    order: 85
+  - source: github:quartz-community/hard-line-breaks
+    enabled: false
+    order: 90
+  - source: github:quartz-community/ox-hugo
+    enabled: false
+    order: 91
+  - source: github:quartz-community/roam
+    enabled: false
+    order: 92
+  - source: github:quartz-community/remove-draft
+    enabled: true
+  - source: github:quartz-community/explicit-publish
+    enabled: false
+  - source: github:quartz-community/alias-redirects
+    enabled: true
+  - source: github:quartz-community/content-index
+    enabled: true
+    options:
+      enableSiteMap: true
+      enableRSS: true
+  - source: github:quartz-community/favicon
+    enabled: true
+  - source: github:quartz-community/og-image
+    enabled: true
+  - source: github:quartz-community/cname
+    enabled: true
+  - source: github:quartz-community/canvas-page
+    enabled: true
+  - source: github:quartz-community/content-page
+    enabled: true
+  - source: github:quartz-community/folder-page
+    enabled: true
+  - source: github:quartz-community/tag-page
+    enabled: true
+  - source: github:quartz-community/explorer
+    enabled: true
+    layout:
+      position: left
+      priority: 50
+  # Deviation from default: graph OFF per visual-direction-v1 differ #3
+  # ("In Quartz derivatives, ship the graph off by default") — the right rail
+  # belongs to the outline + Hypothes.is panel.
+  - source: github:quartz-community/graph
+    enabled: false
+    layout:
+      position: right
+      priority: 10
+  - source: github:quartz-community/search
+    enabled: true
+    layout:
+      position: left
+      priority: 20
+      group: toolbar
+      groupOptions:
+        grow: true
+  - source: github:quartz-community/backlinks
+    enabled: true
+    layout:
+      position: right
+      priority: 50
+  - source: github:quartz-community/article-title
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 10
+  - source: github:quartz-community/content-meta
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 20
+  - source: github:quartz-community/tag-list
+    enabled: false
+    layout:
+      position: beforeBody
+      priority: 30
+  - source: github:quartz-community/page-title
+    enabled: true
+    layout:
+      position: left
+      priority: 10
+  # Deviation from default: dark-mode toggle OFF — canonical edition is
+  # light-only; one family, one appearance. Flip to true if Brandon wants it.
+  - source: github:quartz-community/darkmode
+    enabled: false
+    layout:
+      position: left
+      priority: 30
+      group: toolbar
+  - source: github:quartz-community/reader-mode
+    enabled: true
+    layout:
+      position: left
+      priority: 35
+      group: toolbar
+  - source: github:quartz-community/breadcrumbs
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 5
+      condition: not-index
+  # Stays disabled: reader discussion is Hypothes.is, not giscus.
+  - source: github:quartz-community/comments
+    enabled: false
+    options:
+      provider: giscus
+      options: {}
+    layout:
+      position: afterBody
+      priority: 10
+  - source: github:quartz-community/footer
+    enabled: true
+    options:
+      links:
+        Canonical textbook: https://bptext2026.xyz # ← swap to production domain at cutover
+        Licence (CC-BY-SA-4.0): https://creativecommons.org/licenses/by-sa/4.0/
+  - source: github:quartz-community/recent-notes
+    enabled: false
+  - source: github:quartz-community/spacer
+    enabled: true
+    options: {}
+    order: 25
+    layout:
+      position: left
+      priority: 25
+      display: mobile-only
+  - source: github:quartz-community/bases-page
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/note-properties
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties:
+        - description
+        - tags
+        - aliases
+      excludedProperties: []
+      hidePropertiesView: false
+      delimiters: "---"
+      language: yaml
+    order: 5
+    layout:
+      position: beforeBody
+      priority: 15
+      display: all
+  - source: github:quartz-community/unlisted-pages
+    enabled: true
+    options: {}
+    order: 45
+  - source: github:quartz-community/encrypted-pages
+    enabled: true
+    options:
+      iterations: 600000
+      passwordField: password
+      unlistWhenEncrypted: false
+      outputPath: static/encryptedContentIndex.json
+    order: 900
+    layout:
+      position: body
+      priority: 100
+      display: all
+  - source: github:quartz-community/stacked-pages
+    enabled: false
+    layout:
+      position: afterBody
+      priority: 50
+      display: all
+
+  # ---------------------------------------------------------------------------
+  # Edition customisations — live in their own repo (quartz-edition-extras),
+  # never in Quartz core, so Quartz updates can't break them.
+  # ---------------------------------------------------------------------------
+
+  # Theme fine-tuning (18px/1.65 body, 720px measure, heading scale) +
+  # Hypothes.is + Plausible script injection.
+  - source:
+      repo: "https://github.com/textbookproject2026-alt/quartz-edition-extras.git"
+      subdir: plugins/edition-integrations
+      name: edition-integrations
+    enabled: true
+    options:
+      # ← EDIT (guide step 3c): paste your edition's own script address from
+      # the Plausible dashboard (Site settings → Site installation). It looks
+      # like https://plausible.io/js/pa-XXXXXXXXXX.js
+      # Leave "" and analytics simply stays off — nothing breaks.
+      plausibleScriptSrc: ""
+      # Hypothes.is group-locking hook — INACTIVE until the Publisher-tier
+      # decision (risk R1, Week 4). Config-based locking via the `services`
+      # array 404s on the standard tier (see hypothesis-spike-baseline.md).
+      # When Publisher access lands, set the group ID here and uncomment the
+      # services block in edition-integrations/src/index.ts.
+      hypothesisGroupId: ""
+
+  # "Edit on GitHub" link on every page, mapped from Quartz's own
+  # slug→source-file data (fileData.filePath) — no path reverse-mapping needed.
+  - source:
+      repo: "https://github.com/textbookproject2026-alt/quartz-edition-extras.git"
+      subdir: plugins/edit-on-github
+      name: edit-on-github
+    enabled: true
+    options:
+      repo: "OWNER/REPO" # ← EDIT (guide step 3d) your edition's repo, e.g. biology-dept/textbook-biology-edition
+      branch: main
+    layout:
+      position: beforeBody
+      priority: 25 # sits with the page meta, under the title
+
+layout:
+  groups:
+    toolbar:
+      priority: 35
+      direction: row
+      gap: 0.5rem
+  byPageType:
+    "404":
+      positions:
+        beforeBody: []
+        left: []
+        right: []
+    content: {}
+    folder:
+      exclude:
+        - reader-mode
+      positions:
+        right: []
+    tag:
+      exclude:
+        - reader-mode
+      positions:
+        right: []
+    canvas: {}
+    bases: {}
