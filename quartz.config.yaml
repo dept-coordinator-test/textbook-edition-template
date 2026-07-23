@@ -305,7 +305,7 @@ plugins:
       # array 404s on the standard tier (see hypothesis-spike-baseline.md).
       # When Publisher access lands, set the group ID here and uncomment the
       # services block in edition-integrations/src/index.ts.
-      hypothesisGroupId: ""
+      hypothesisGroupId: "L9KgjVPa"
 
   # "Edit on GitHub" link on every page, mapped from Quartz's own
   # slug→source-file data (fileData.filePath) — no path reverse-mapping needed.
