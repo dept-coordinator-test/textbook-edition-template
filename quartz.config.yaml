@@ -8,7 +8,16 @@
 configuration:
   pageTitle: "EDITION TITLE" # ← EDIT (guide step 3a) e.g. "Biology Edition — <Textbook Title>"
   pageTitleSuffix: ""
-  enableSPA: true
+  # DO NOT set this to true. Quartz's SPA navigation destroys the Hypothes.is
+  # client irrecoverably: micromorph deletes <hypothesis-sidebar> from the body
+  # on every navigation, and re-booting embed.js into the already-swapped body
+  # does not produce a working sidebar. Tagging head elements with data-persist
+  # kept the boot marker alive but was insufficient — and head elements then
+  # accumulated on each nav. Four rounds of debugging established this.
+  # Editions therefore trade slightly slower navigation (full page loads) for
+  # reliable third-party annotation, which also matches how the canonical
+  # Obsidian Publish site behaves.
+  enableSPA: false
   enablePopovers: true
   # Built-in provider uses Plausible's legacy shared script; we inject the
   # per-site pa-*.js script via edition-integrations instead. Keep this null
