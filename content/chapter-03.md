@@ -1,4 +1,4 @@
-# Chapter 3 (Department Test): Reality and the Problem of Unobservables
+# Chapter 3: Reality and the Problem of Unobservables
 
 > [!abstract] Key concepts in this chapter
 > Hover a term to preview its definition, or click to open the concept page:

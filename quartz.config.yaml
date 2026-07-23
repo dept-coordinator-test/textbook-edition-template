@@ -6,7 +6,7 @@
 # Full plugin list mirrors quartz.config.default.yaml (v5.0.0); deviations are commented.
 
 configuration:
-  pageTitle: "EDITION TITLE" # ← EDIT (guide step 3a) e.g. "Biology Edition — <Textbook Title>"
+  pageTitle: "Biology Edition — Ontology for Social Research"
   pageTitleSuffix: ""
   # DO NOT set this to true. Quartz's SPA navigation destroys the Hypothes.is
   # client irrecoverably: micromorph deletes <hypothesis-sidebar> from the body
@@ -24,7 +24,7 @@ configuration:
   # or every view double-counts.
   analytics: null
   locale: en-US
-  baseUrl: edition.example.org # ← EDIT (guide step 3b) your site address, no https://, no trailing slash
+  baseUrl: textbook-edition-template-5cm.pages.dev
   ignorePatterns:
     - private
     - templates
@@ -290,7 +290,7 @@ plugins:
   # Theme fine-tuning (18px/1.65 body, 720px measure, heading scale) +
   # Hypothes.is + Plausible script injection.
   - source:
-      repo: "https://github.com/textbookproject2026-alt/quartz-edition-extras.git"
+      repo: "dept-coordinator-test/textbook-edition-template"
       subdir: plugins/edition-integrations
       name: edition-integrations
     enabled: true
