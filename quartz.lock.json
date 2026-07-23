@@ -115,9 +115,9 @@
         "name": "edition-integrations"
       },
       "resolved": "https://github.com/textbookproject2026-alt/quartz-edition-extras.git",
-      "commit": "8bc97e7cd4623b8ce04af35098498b6977b77ebd",
+      "commit": "0da1208f58d4951b513ae9565b8e3a589a9e95ba",
       "subdir": "plugins/edition-integrations",
-      "installedAt": "2026-07-23T11:24:27.348Z"
+      "installedAt": "2026-07-23T11:57:59.515Z"
     },
     "encrypted-pages": {
       "source": "github:quartz-community/encrypted-pages",
