@@ -129,6 +129,20 @@ That's it. Your edition is live.
 
 ---
 
+## Why pages fully reload
+
+You may notice that clicking from one chapter to another reloads the whole
+page, rather than swapping the text in instantly. That is deliberate, and it
+is set centrally in `quartz.config.yaml` (`enableSPA: false`).
+
+The instant-navigation mode is incompatible with the annotation sidebar: it
+tears the Hypothes.is panel out of the page on every click, and the panel
+cannot be revived afterwards. Editions accept slightly slower navigation in
+exchange for annotation that reliably works — which is also how the canonical
+Obsidian Publish site behaves. Please don't switch it back on.
+
+---
+
 ## Keeping your edition up to date
 
 When the canonical textbook is revised (once a year), you pull those changes
