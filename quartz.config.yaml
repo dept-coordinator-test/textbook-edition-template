@@ -290,7 +290,7 @@ plugins:
   # Theme fine-tuning (18px/1.65 body, 720px measure, heading scale) +
   # Hypothes.is + Plausible script injection.
   - source:
-      repo: "dept-coordinator-test/textbook-edition-template"
+      repo: "https://github.com/textbookproject2026-alt/quartz-edition-extras.git"
       subdir: plugins/edition-integrations
       name: edition-integrations
     enabled: true
@@ -315,7 +315,7 @@ plugins:
       name: edit-on-github
     enabled: true
     options:
-      repo: "OWNER/REPO" # ← EDIT (guide step 3d) your edition's repo, e.g. biology-dept/textbook-biology-edition
+      repo: "dept-coordinator-test/textbook-edition-template" # ← EDIT (guide step 3d) your edition's repo
       branch: main
     layout:
       position: beforeBody
