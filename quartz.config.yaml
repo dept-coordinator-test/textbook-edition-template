@@ -7,7 +7,7 @@
 
 configuration:
   pageTitle: "Biology Edition — Ontology for Social Research"
-  pageTitleSuffix: ""
+  pageTitleSuffix: " - Biology"
   # DO NOT set this to true. Quartz's SPA navigation destroys the Hypothes.is
   # client irrecoverably: micromorph deletes <hypothesis-sidebar> from the body
   # on every navigation, and re-booting embed.js into the already-swapped body
