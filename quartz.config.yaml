@@ -7,7 +7,7 @@
 
 configuration:
   pageTitle: "EDITION TITLE" # ← EDIT (guide step 3a) e.g. "Biology Edition — <Textbook Title>"
-  pageTitleSuffix: ""
+  pageTitleSuffix: " - Department Edition"
   # DO NOT set this to true. Quartz's SPA navigation destroys the Hypothes.is
   # client irrecoverably: micromorph deletes <hypothesis-sidebar> from the body
   # on every navigation, and re-booting embed.js into the already-swapped body
